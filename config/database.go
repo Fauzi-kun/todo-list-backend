@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/Fauzi-kun/todolist/models"
 	"gorm.io/driver/postgres"
@@ -12,7 +13,7 @@ import (
 var DB *gorm.DB
 
 func ConnectDB(){
-	dsn := "host=localhost user=postgres password=fauzi dbname=todolist port=5432 sslmode=disable"
+	dsn := os.Getenv("DATABASE_URL")
 	var err error
 	DB, err = gorm.Open(postgres.Open(dsn),&gorm.Config{})
 	if err != nil{

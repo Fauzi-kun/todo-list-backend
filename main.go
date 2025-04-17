@@ -5,9 +5,11 @@ import (
 	"github.com/Fauzi-kun/todolist/routes"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	_ = godotenv.Load()	
 	config.ConnectDB()
 
 	r := gin.Default()
